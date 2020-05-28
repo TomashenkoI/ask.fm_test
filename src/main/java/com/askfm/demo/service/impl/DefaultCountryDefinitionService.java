@@ -9,12 +9,11 @@ import javax.servlet.ServletRequest;
 @Service
 public class DefaultCountryDefinitionService implements CountryDefinitionService {
 
-  public static final String COUNTRY_CODE_MOCK = "lv";
+  private static final String COUNTRY_CODE_MOCK = "lv";
 
   @Override
   public String getCountryCode(ServletRequest request) {
     return COUNTRY_CODE_MOCK;
   }
-
 
 }

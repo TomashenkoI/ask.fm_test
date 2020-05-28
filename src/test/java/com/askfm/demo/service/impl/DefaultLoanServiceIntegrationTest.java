@@ -15,7 +15,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static com.askfm.demo.TestConstantHolder.*;
+import static com.askfm.demo.TestConstantHolder.LOAN_AMOUNT;
+import static com.askfm.demo.TestConstantHolder.PERSONAL_ID;
+import static com.askfm.demo.TestConstantHolder.TERM_DAYS;
+import static com.askfm.demo.TestConstantHolder.USER_NAME;
+import static com.askfm.demo.TestConstantHolder.USER_SURNAME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -1,7 +1,7 @@
 package com.askfm.demo.service.impl;
 
 import com.askfm.demo.dto.ApplyLoanRequestDto;
-import com.askfm.demo.entity.User;
+import com.askfm.demo.entity.UserEntity;
 import com.askfm.demo.mapper.UserMapper;
 import com.askfm.demo.repository.UserRepository;
 import com.askfm.demo.service.UserService;
@@ -21,14 +21,14 @@ public class DefaultUserService implements UserService {
   private final UserMapper userMapper;
 
   @Override
-  public Optional<User> getUserByPersonalId(long personalId) {
+  public Optional<UserEntity> getUserByPersonalId(long personalId) {
     return userRepository.findById(personalId);
   }
 
   @Override
   @Transactional
-  public User registerUser(ApplyLoanRequestDto applyLoanRequestDto) {
-    var user = userMapper.getUserData(applyLoanRequestDto);
-    return userRepository.save(user);
+  public UserEntity registerUser(ApplyLoanRequestDto applyLoanRequestDto) {
+    var userEntity = userMapper.getUserData(applyLoanRequestDto);
+    return userRepository.save(userEntity);
   }
 }

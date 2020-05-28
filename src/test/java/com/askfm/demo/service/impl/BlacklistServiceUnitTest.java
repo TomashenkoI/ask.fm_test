@@ -10,9 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static com.askfm.demo.TestConstantHolder.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Matchers.any;
+import static com.askfm.demo.TestConstantHolder.PERSONAL_ID;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -29,7 +30,10 @@ class BlacklistServiceUnitTest {
     when(mockBlacklistRepository.findByPersonalId(anyInt())).thenReturn(Optional.of(new BlacklistEntity()));
 
     //then
-    var exception = assertThrows(BlackListedUserException.class, () -> applyLoanRequestBannedUserValidator.checkIfNotBanned(PERSONAL_ID));
+    var exception = assertThrows(
+        BlackListedUserException.class,
+        () -> applyLoanRequestBannedUserValidator.checkIfNotBanned(PERSONAL_ID)
+    );
     assertEquals("User is banned, personalId = " + PERSONAL_ID, exception.getMessage());
   }
 

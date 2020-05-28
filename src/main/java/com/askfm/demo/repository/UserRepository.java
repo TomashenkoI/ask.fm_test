@@ -1,8 +1,8 @@
 package com.askfm.demo.repository;
 
-import com.askfm.demo.entity.User;
+import com.askfm.demo.entity.UserEntity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 }

@@ -2,13 +2,11 @@ package com.askfm.demo.controller;
 
 import com.askfm.demo.dto.ApplyLoanRequestDto;
 import com.askfm.demo.dto.LoanDto;
-import com.askfm.demo.filter.RequestFrequencyFilter;
 import com.askfm.demo.service.CountryDefinitionService;
 import com.askfm.demo.service.LoanService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +14,19 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 import static com.askfm.demo.TestConstantHolder.LOAN_AMOUNT;
 import static com.askfm.demo.TestConstantHolder.PERSONAL_ID;
 import static com.askfm.demo.TestConstantHolder.TERM_DAYS;
 import static com.askfm.demo.TestConstantHolder.USER_NAME;
 import static com.askfm.demo.TestConstantHolder.USER_SURNAME;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -105,7 +99,8 @@ class LoanControllerTest {
         .andExpect(status().isOk())
         .andReturn();
 
-    var loanDtoList = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<LoanDto>>() {});
+    var loanDtoList = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<LoanDto>>() {
+    });
     assertEquals(loanDtoList, expectedResponse);
   }
 
@@ -129,7 +124,8 @@ class LoanControllerTest {
         .andExpect(status().isOk())
         .andReturn();
 
-    var loanDtoList = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<LoanDto>>() {});
+    var loanDtoList = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<LoanDto>>() {
+    });
     assertEquals(loanDtoList, expectedResponse);
   }
 

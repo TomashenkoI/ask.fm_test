@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")

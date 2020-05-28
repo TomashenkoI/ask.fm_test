@@ -1,0 +1,5 @@
+loan:
+  - id: 1
+    amount: 1
+    term: 5
+    user_id: 1

@@ -1,0 +1,9 @@
+users:
+  - id: 1
+    name: 'test'
+    surname: 'test'
+    personal_id: 1
+  - id: 2
+    name: 'test2'
+    surname: 'test2'
+    personal_id: 2

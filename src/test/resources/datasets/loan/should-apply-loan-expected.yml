@@ -3,3 +3,4 @@ loan:
     amount: 1
     term_days: 5
     user_id: 1
+    country_code: "LV"

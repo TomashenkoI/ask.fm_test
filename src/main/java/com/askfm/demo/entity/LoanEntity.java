@@ -49,6 +49,9 @@ public class LoanEntity {
   @CreationTimestamp
   private Instant createdDate;
 
+  @Column(name = "country_code")
+  private String countryCode;
+
   private boolean approved;
 
 }

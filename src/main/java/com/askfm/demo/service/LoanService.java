@@ -6,7 +6,7 @@ import com.askfm.demo.dto.LoanDto;
 import java.util.List;
 
 public interface LoanService {
-  void applyLoan(ApplyLoanRequestDto applyLoanRequestDto);
+  void applyLoan(ApplyLoanRequestDto applyLoanRequestDto, String countryCode);
 
   void approveLoan(long loanId);
 

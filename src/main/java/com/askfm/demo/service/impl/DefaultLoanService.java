@@ -31,9 +31,10 @@ public class DefaultLoanService implements LoanService {
 
   @Override
   @Transactional
-  public void applyLoan(ApplyLoanRequestDto applyLoanRequestDto) {
+  public void applyLoan(ApplyLoanRequestDto applyLoanRequestDto, String countryCode) {
     blacklistService.checkIfNotBanned(applyLoanRequestDto.getPersonalId());
     var loanEntity = loanMapper.toEntity(applyLoanRequestDto);
+    loanEntity.setCountryCode(countryCode);
     var userEntity = userService.getUserByPersonalId(applyLoanRequestDto.getPersonalId())
         .orElse(userService.registerUser(applyLoanRequestDto));
     loanEntity.setUser(userEntity);

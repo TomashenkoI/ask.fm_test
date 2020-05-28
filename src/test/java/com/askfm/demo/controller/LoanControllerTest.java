@@ -4,6 +4,7 @@ import com.askfm.demo.dto.ApplyLoanRequestDto;
 import com.askfm.demo.dto.LoanDto;
 import com.askfm.demo.service.CountryDefinitionService;
 import com.askfm.demo.service.LoanService;
+import com.askfm.demo.service.RequestFrequencyLimiter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -19,9 +20,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.askfm.demo.TestConstantHolder.COUNTRY_CODE;
 import static com.askfm.demo.TestConstantHolder.LOAN_AMOUNT;
 import static com.askfm.demo.TestConstantHolder.PERSONAL_ID;
 import static com.askfm.demo.TestConstantHolder.TERM_DAYS;
+import static com.askfm.demo.TestConstantHolder.USER_ID;
 import static com.askfm.demo.TestConstantHolder.USER_NAME;
 import static com.askfm.demo.TestConstantHolder.USER_SURNAME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,13 +49,16 @@ class LoanControllerTest {
   @MockBean
   private LoanService loanService;
 
+  @MockBean
+  private RequestFrequencyLimiter requestFrequencyLimiter;
+
   @Autowired
   private ObjectMapper objectMapper;
 
   @Test
   void testApplyLoan_thenExpected201() throws Exception {
     //given
-    when(countryDefinitionService.getCountryCode(any())).thenReturn("lv");
+    when(countryDefinitionService.getCountryCode(any())).thenReturn("LV");
 
     var applyLoanDto = new ApplyLoanRequestDto();
     applyLoanDto.setAmount(LOAN_AMOUNT);
@@ -88,8 +94,8 @@ class LoanControllerTest {
     loanDto1.setTermDays(TERM_DAYS);
 
     var loanDto2 = new LoanDto();
-    loanDto2.setName(USER_NAME);
-    loanDto2.setSurname(USER_SURNAME);
+    loanDto2.setUserId(USER_ID);
+    loanDto2.setCountryCode(COUNTRY_CODE);
 
     when(loanService.getAllUserApprovedLoans(anyLong())).thenReturn(expectedResponse);
 
@@ -113,8 +119,8 @@ class LoanControllerTest {
     loanDto1.setTermDays(TERM_DAYS);
 
     var loanDto2 = new LoanDto();
-    loanDto2.setName(USER_NAME);
-    loanDto2.setSurname(USER_SURNAME);
+    loanDto2.setUserId(USER_ID);
+    loanDto2.setCountryCode(COUNTRY_CODE);
 
     when(loanService.getAllUserApprovedLoans(anyLong())).thenReturn(expectedResponse);
 

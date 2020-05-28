@@ -1,43 +1,33 @@
-package com.askfm.demo.filter;
+package com.askfm.demo.service.impl;
 
 
 import com.askfm.demo.exception.LargeRequestFrequencyException;
-import com.askfm.demo.service.CountryDefinitionService;
+import com.askfm.demo.service.RequestFrequencyLimiter;
 
 import org.apache.commons.lang3.concurrent.TimedSemaphore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
-
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 
 import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-public class RequestFrequencyFilter extends GenericFilterBean {
+public class DefaultRequestFrequencyLimiter implements RequestFrequencyLimiter {
 
   private static final int TIME_PERIOD = 1;
 
-  @Value("${permitsPerSecond}")
+  @Value("${permits_per_second}")
   private Integer permitsPerSecond;
 
-  private final CountryDefinitionService countryDefinitionService;
   private final Map<String, TimedSemaphore> countryToTimedSemaphoreMap = new ConcurrentHashMap<>();
 
   @Override
-  public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-    var countryCode = countryDefinitionService.getCountryCode(request);
+  public void checkRequestsFrequency(String countryCode) {
     checkFrequencyFromCountry(countryCode);
-    chain.doFilter(request, response);
   }
 
   private void checkFrequencyFromCountry(String countryCode) {

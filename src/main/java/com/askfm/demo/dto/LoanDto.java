@@ -13,9 +13,9 @@ import lombok.Setter;
 public class LoanDto {
   private BigDecimal amount;
   private Integer termDays;
-  private String name;
-  private String surname;
   private long userId;
   private Instant createdDate;
-  private Instant approvedDate;
+  private String countryCode;
+  private Instant termEndDate;
+  private boolean approved;
 }

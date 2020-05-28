@@ -1,4 +1,4 @@
-permitsPerSecond: 1
+permits_per_second: 1
 
 server:
     port: 8080

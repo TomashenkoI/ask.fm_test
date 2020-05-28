@@ -2,7 +2,9 @@ package com.askfm.demo.controller;
 
 import com.askfm.demo.dto.ApplyLoanRequestDto;
 import com.askfm.demo.dto.LoanDto;
+import com.askfm.demo.service.CountryDefinitionService;
 import com.askfm.demo.service.LoanService;
+import com.askfm.demo.service.RequestFrequencyLimiter;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -24,11 +28,15 @@ import lombok.RequiredArgsConstructor;
 public class LoanController {
 
   private final LoanService loanService;
+  private final CountryDefinitionService countryDefinitionService;
+  private final RequestFrequencyLimiter requestFrequencyLimiter;
 
   @PostMapping("/apply")
   @ResponseStatus(HttpStatus.CREATED)
-  public void applyLoan(@RequestBody ApplyLoanRequestDto applyLoanRequestDto) {
-    loanService.applyLoan(applyLoanRequestDto);
+  public void applyLoan(@RequestBody ApplyLoanRequestDto applyLoanRequestDto, HttpServletRequest request) {
+    var countryCode = countryDefinitionService.getCountryCode(request.getRemoteAddr());
+    requestFrequencyLimiter.checkRequestsFrequency(countryCode);
+    loanService.applyLoan(applyLoanRequestDto, countryCode);
   }
 
   @PutMapping("/approve/{loanId}")

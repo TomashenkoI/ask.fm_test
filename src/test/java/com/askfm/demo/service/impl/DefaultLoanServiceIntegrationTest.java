@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.askfm.demo.TestConstantHolder.COUNTRY_CODE;
 import static com.askfm.demo.TestConstantHolder.LOAN_AMOUNT;
 import static com.askfm.demo.TestConstantHolder.PERSONAL_ID;
 import static com.askfm.demo.TestConstantHolder.TERM_DAYS;
@@ -148,7 +149,7 @@ class DefaultLoanServiceIntegrationTest extends PostgresqlDbBaseTest {
     var applyLoanDto = new ApplyLoanRequestDto(LOAN_AMOUNT, TERM_DAYS, USER_NAME, USER_SURNAME, PERSONAL_ID);
 
     //when
-    loanService.applyLoan(applyLoanDto);
+    loanService.applyLoan(applyLoanDto, COUNTRY_CODE);
   }
 
 }

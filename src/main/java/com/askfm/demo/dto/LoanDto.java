@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LoanDto {
   private BigDecimal amount;
-  private Integer term;
+  private Integer termDays;
   private String name;
   private String surname;
   private long userId;

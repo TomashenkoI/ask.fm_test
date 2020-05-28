@@ -49,7 +49,7 @@ public class DefaultLoanService implements LoanService {
 
     blacklistService.checkIfNotBanned(loanEntity.getUser().getPersonalId());
 
-    var termEndDate = Instant.now().plus(loanEntity.getTerm(), ChronoUnit.DAYS);
+    var termEndDate = Instant.now().plus(loanEntity.getTermDays(), ChronoUnit.DAYS);
     loanEntity.setTermEndDate(termEndDate);
     loanEntity.setApproved(true);
     loanRepository.save(loanEntity);

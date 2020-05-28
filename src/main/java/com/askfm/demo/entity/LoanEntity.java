@@ -35,8 +35,8 @@ public class LoanEntity {
   @Column(name = "amount", nullable = false)
   private BigDecimal amount;
 
-  @Column(name = "term", nullable = false)
-  private Integer term; //number of days
+  @Column(name = "term_days", nullable = false)
+  private Integer termDays; //number of days
 
   @JoinColumn(name = "user_id")
   @ManyToOne(fetch = FetchType.LAZY)

@@ -58,7 +58,7 @@ class LoanControllerTest {
     applyLoanDto.setAmount(LOAN_AMOUNT);
     applyLoanDto.setName(USER_NAME);
     applyLoanDto.setSurname(USER_SURNAME);
-    applyLoanDto.setTerm(TERM_DAYS);
+    applyLoanDto.setTermDays(TERM_DAYS);
     applyLoanDto.setPersonalId(PERSONAL_ID);
 
     var content = objectMapper.writeValueAsString(applyLoanDto);
@@ -85,7 +85,7 @@ class LoanControllerTest {
     List<LoanDto> expectedResponse = new ArrayList<>();
     var loanDto1 = new LoanDto();
     loanDto1.setAmount(LOAN_AMOUNT);
-    loanDto1.setTerm(TERM_DAYS);
+    loanDto1.setTermDays(TERM_DAYS);
 
     var loanDto2 = new LoanDto();
     loanDto2.setName(USER_NAME);
@@ -110,7 +110,7 @@ class LoanControllerTest {
     List<LoanDto> expectedResponse = new ArrayList<>();
     var loanDto1 = new LoanDto();
     loanDto1.setAmount(LOAN_AMOUNT);
-    loanDto1.setTerm(TERM_DAYS);
+    loanDto1.setTermDays(TERM_DAYS);
 
     var loanDto2 = new LoanDto();
     loanDto2.setName(USER_NAME);

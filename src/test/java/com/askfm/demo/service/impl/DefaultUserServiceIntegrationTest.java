@@ -44,7 +44,7 @@ class DefaultUserServiceIntegrationTest extends PostgresqlDbBaseTest {
     applyLoanDto.setAmount(LOAN_AMOUNT);
     applyLoanDto.setName(USER_NAME);
     applyLoanDto.setSurname(USER_SURNAME);
-    applyLoanDto.setTerm(TERM_DAYS);
+    applyLoanDto.setTermDays(TERM_DAYS);
     applyLoanDto.setPersonalId(PERSONAL_ID);
 
     //when

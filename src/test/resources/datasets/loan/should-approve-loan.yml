@@ -1,13 +1,13 @@
 loan:
   - id: 1
     amount: 1
-    term: 5
+    term_days: 5
     user_id: 1
     created_date: 2020-05-05
     approved: false
   - id: 2
     amount: 1
-    term: 5
+    term_days: 5
     user_id: 1
     created_date: 2020-05-05
     approved: false

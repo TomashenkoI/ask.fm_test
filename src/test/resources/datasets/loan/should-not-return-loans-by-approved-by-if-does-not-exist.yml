@@ -1,19 +1,19 @@
 loan:
   - id: 1
     amount: 1
-    term: 5
+    term_days: 5
     user_id: 1
     approved: true
     created_date: 2020-05-05
   - id: 2
     amount: 1
-    term: 5
+    term_days: 5
     user_id: 1
     approved: true
     created_date: 2020-05-05
   - id: 3
     amount: 1
-    term: 5
+    term_days: 5
     user_id: 2
     approved_by: "another_by_another"
     created_date: 2020-05-05
